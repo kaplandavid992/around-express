@@ -1,0 +1,27 @@
+{
+  "name": "around-express",
+  "version": "1.0.0",
+  "description": "Around The U.S , Express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yandex-praktikum/around-express.git"
+  },
+  "author": "David Kaplan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yandex-praktikum/around-express/issues"
+  },
+  "homepage": "https://github.com/yandex-praktikum/around-express#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
