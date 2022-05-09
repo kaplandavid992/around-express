@@ -2,8 +2,10 @@
   "name": "around-express",
   "version": "1.0.0",
   "description": "Around The U.S , Express.js",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint ."
   },
@@ -18,10 +20,12 @@
   },
   "homepage": "https://github.com/yandex-praktikum/around-express#readme",
   "devDependencies": {
-    "eslint": "^8.15.0"
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "express": "^4.18.1"
   }
 }
