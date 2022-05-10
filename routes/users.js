@@ -1,13 +1,7 @@
 const router = require('express').Router();
-const { getJsonFromFile } = require('../helpers/files')
+const { getUsers, getUserById } = require('../controllers/users');
 
-router.get('/users', async (req,res)=>{
-  const users = await getJsonFromFile('./data/users.json');
-  res.send(users);
-})
-
-router.get('/users/:id', (req,res)=>{
-    res.send(`user ${req.params.id}`)
-})
+router.get('/users', getUsers);
+router.get('/users/:id', getUserById);
 
 module.exports = router;

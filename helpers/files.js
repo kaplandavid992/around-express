@@ -1,9 +1,8 @@
-const fs = require('fs');
+const fsPromises = require("fs").promises;
 const getJsonFromFile = (filePath) => {
-  return fs.promises.readFile(filePath)
-  .then(file => {
+  return fsPromises.readFile(filePath, { encoding: "utf8" }).then((file) => {
     return JSON.parse(file);
   });
-}
+};
 
-module.exports = { getJsonFromFile }
+module.exports = { getJsonFromFile };
