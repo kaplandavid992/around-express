@@ -8,7 +8,7 @@ const getCards = async (req, res) => {
     const cards = await getJsonFromFile(cardsFilePath);
     res.send(cards);
   } catch (error) {
-    res.status(500).send('Something went wrong');
+    res.status(500).send({ message: 'Something went wrong' });
   }
 };
 
