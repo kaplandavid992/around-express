@@ -17,6 +17,12 @@ const route = (req, res) => {
 
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
+app.use((req, res, next) => {
+  req.user = {
+    _id: '5d208fe20fdbbf001ffdf72b'
+  };
+  next();
+});
 app.get('*', route);
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);

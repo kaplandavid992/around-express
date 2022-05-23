@@ -35,7 +35,9 @@ assert.equal(error, null);
 
 // It starts with http:// or https://.
 // www. is an optional group.
-// The path is a sequence containing letters, numbers, or any of the following characters: ._~:/?%#[]@!$&'()*+,;= written following a / after the URL or DNS zone. There may be a hash # at the end of the path.
+// The path is a sequence containing letters, numbers, or any
+// of the following characters: ._~:/?%#[]@!$&'()*+,;= written following a / after
+//the URL or DNS zone. There may be a hash # at the end of the path.
 // The template is able to find URLs in the following formats:
 // http://example.com/
 // https://www.example.com/

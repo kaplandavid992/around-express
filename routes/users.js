@@ -8,3 +8,6 @@ router.post('/users', createUser);
 module.exports = router;
 
 
+//PATCH /users/me — update profile
+//PATCH /users/me/avatar — update avatar
+//  get the id from req.user._id

@@ -22,4 +22,20 @@ const deleteCard = async (req, res) => {
    .catch(() => res.status(500).send({ message: 'Error' }))
 }
 
+module.exports.addCard = (req, res) => {
+  console.log(req.user._id); // _id will become accessible
+};
 module.exports = { getCards, addCard, deleteCard };
+
+
+//module.exports.likeCard = (req, res) => Card.findByIdAndUpdate(
+//   req.params.cardId,
+//   { $addToSet: { likes: req.user._id } }, // add _id to the array if it's not there yet
+//   { new: true },
+// )
+
+// module.exports.dislikeCard = (req, res) => Card.findByIdAndUpdate(
+//   req.params.cardId,
+//   { $pull: { likes: req.user._id } }, // remove _id from the array
+//   { new: true },
+// )
