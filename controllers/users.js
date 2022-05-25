@@ -21,7 +21,7 @@ const getUserById = async (req, res) => {
     throw error;
     });
     res.send(user).catch((error) => {
-       res.status(500).send({ message: 'Something went wrong' });})
+       res.status(500).send({ message: 'An error has occurred on the server' });})
 }
 
 
@@ -29,23 +29,21 @@ const createUser = async (req, res) => {
   const { name, about, avatar } = req.body;
    await User.create({ name, about, avatar })
     .then(user => res.send({ data: user }))
-    .catch(() => res.status(500).send({ message: 'Error' }));
+    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
 };
 
 const updateProfile = async (req, res) => {
-  const id = req.user._id;
   const { name, about } = req.body;
-   await User.replaceOne({ name, about })
+   await User.findByIdAndUpdate(req.user._id, { name, about })
     .then(user => res.send({ data: user }))
-    .catch(() => res.status(500).send({ message: 'Error' }));
+    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
 };
 
 const updateAvatar = async (req, res) => {
-  const id = req.user._id;
   const { avatar } = req.body;
-   await User.replaceOne({ avatar })
+   await User.findByIdAndUpdate(req.user._id, { avatar: avatar })
     .then(user => res.send({ data: user }))
-    .catch(() => res.status(500).send({ message: 'Error' }));
+    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
 };
 
 module.exports = { getUsers, getUserById, createUser, updateProfile, updateAvatar};
