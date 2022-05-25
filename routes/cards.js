@@ -1,12 +1,13 @@
 const router = require('express').Router();
-const { getCards, addCard, deleteCard } = require('../controllers/cards');
+const { getCards, addCard, deleteCard, likeCard, dislikeCard } = require('../controllers/cards');
 
 router.get('/cards', getCards);
 router.post('/cards', addCard);
 router.delete('/cards/:cardId', deleteCard);
+router.put('/cards/:cardId/likes', likeCard);
+router.delete('/cards/:cardId/likes', dislikeCard);
+
 module.exports = router;
 
-//PUT /cards/:cardId/likes — like a card
-//DELETE /cards/:cardId/likes — unlike a card
-// get the id from req.user._id
+
 

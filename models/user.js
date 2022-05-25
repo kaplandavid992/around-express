@@ -1,22 +1,29 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required:true,
+    required: true,
     minlength: 2,
     maxlength: 30,
   },
-  about:{
-    type: String,
-    required:true,
-    minlength: 2,
-    maxlength: 30,
-  },
-  avatar:{
+  about: {
     type: String,
     required: true,
-  }
+    minlength: 2,
+    maxlength: 30,
+  },
+  avatar: {
+    type: String,
+    required: [true, "valid url required"],
+    validate: { validator: function(v) {
+      const re = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
+      console.log(re.test(v));
+      return re.test(v);
+      },
+      message: (props) => `${props.value} is not a valid url!`,
+    },
+  },
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model("user", userSchema);
