@@ -1,14 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/aroundb');
 
-
 const { PORT = 3000 } = process.env;
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
+
 const route = (req, res) => {
   console.log(res.status);
   res.status(404).send({ message: 'Requested resource not found' });
@@ -17,7 +18,7 @@ const route = (req, res) => {
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   req.user = {
-    _id: '5d208fe20fdbbf001ffdf72b'
+    _id: '5d208fe20fdbbf001ffdf72b',
   };
   next();
 });
