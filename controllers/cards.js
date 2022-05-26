@@ -1,3 +1,4 @@
+const { validationError, defaultError, errorsHandle } = require('../utils/errorHandling');
 const Card = require('../models/card');
 
 const getCards = async (req, res) => {
@@ -5,7 +6,7 @@ const getCards = async (req, res) => {
     const cards = await Card.find({});
     res.send(cards);
   } catch (error) {
-    res.status(500).send({ message: 'Something went wrong' });
+    defaultError(res);
   }
 };
 
@@ -20,13 +21,15 @@ const addCard = async (req, res) => {
     .then((card) => {
       res.send({ data: card });
     })
-    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
+    .catch((err) => {
+      validationError(err);
+    });
 };
 
 const deleteCard = async (req, res) => {
   await Card.deleteOne({ id: req.params.cardId })
     .then((card) => res.send({ data: card }))
-    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
+    .catch((err) => errorsHandle(err, res, 'Card'));
 };
 
 const likeCard = async (req, res) => {
@@ -36,7 +39,7 @@ const likeCard = async (req, res) => {
     { new: true },
   )
     .then((card) => res.send({ data: card }))
-    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
+    .catch((err) => errorsHandle(err, res, 'Card'));
 };
 
 const dislikeCard = async (req, res) => {
@@ -46,7 +49,7 @@ const dislikeCard = async (req, res) => {
     { new: true },
   )
     .then((card) => res.send({ data: card }))
-    .catch(() => res.status(500).send({ message: 'An error has occurred on the server' }));
+    .catch((err) => errorsHandle(err, res, 'Card'));
 };
 
 module.exports = {

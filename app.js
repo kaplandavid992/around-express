@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -15,6 +16,7 @@ const route = (req, res) => {
   res.status(404).send({ message: 'Requested resource not found' });
 };
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   req.user = {
